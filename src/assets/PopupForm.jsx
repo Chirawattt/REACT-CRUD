@@ -11,7 +11,7 @@ export default function PopupForm({ isOpen, onClose, onSubmit }) {
         e.preventDefault();
         onSubmit({ author, title });
         onClose(); // clost the pop-up after submitting
-        axios.post("", {
+        axios.post("https://node56983-chirawat-noderest.proen.app.ruk-com.cloud/books", {
             author: author,
             title: title
         })
@@ -23,7 +23,7 @@ export default function PopupForm({ isOpen, onClose, onSubmit }) {
     if (!isOpen) return null;
 
     return (
-        <div>
+        <div
             style={{
                 position: 'fixed',
                 top: "50%",
@@ -31,7 +31,7 @@ export default function PopupForm({ isOpen, onClose, onSubmit }) {
                 transform: 'translate(-50%, -50%)',
                 backgroundColor: 'gray',
                 padding: "20px",
-                zIndex: 100
+                zIndex: 100,
             }}
         >
             <form onSubmit={handleSubmit}>

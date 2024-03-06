@@ -4,7 +4,7 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
-import PopupForm from './Popup';
+import PopupForm from './PopupForm';
 
 export default function BookList() {
     const [books, setBooks] = useState([]);
@@ -36,7 +36,7 @@ export default function BookList() {
     }, []);
 
     const viewBook = (id) => {
-        axios.get('')
+        axios.get('https://node56983-chirawat-noderest.proen.app.ruk-com.cloud/books/${id}')
         .then((res) => {
             setBook(res.data);
         });
@@ -47,14 +47,14 @@ export default function BookList() {
         console.log("upDFunc:  ", book);
         console.log("upDFunc: ", editingData);
     
-        axios.put('')
+        axios.put('https://node56983-chirawat-noderest.proen.app.ruk-com.cloud/books/${id}')
         .then((res) => {
             setBook(res.data);
         });
     };
 
     const deleteBook = (id) => {
-        axios.delete('')
+        axios.delete('https://node56983-chirawat-noderest.proen.app.ruk-com.cloud/books/${id}')
         .then((res) => {
             setBooks(books.filter((book) => book.id !== id));
         });
